@@ -19,7 +19,7 @@
 			<nav class="navbar navbar-default">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						<a class="navbar-brand" href="#" th:href="@{/}">Home</a>
+						<a class="navbar-brand" href="#" th:href="@{/}"><p th:text="#{rent.home}"/></a>
 						<ul class="nav navbar-nav">
 							<li><a href="#" th:href="@{/products}"><p th:text="#{rent.area}"/></a></li>
 							<li><a href="#" th:href="@{/product/new}"><p th:text="#{rent.area.create}"/></a></li>
@@ -27,104 +27,6 @@
 					</div>
 				</div>
 			</nav>
-			<div class="jumbotron">
-				<div class="row text-center">
-					<div id=FixImage class="fix_image">
-						<img id=MyBackgroundImage src="../../static/images/home_v1.jpg"
-							th:src="@{/images/home_v1.jpg}"
-							class="rounded my-background-image" alt="Cinque Terre" />
-							
-							<img
-							id=MyObjectImage_1 onclick="onClickMyObjectImage(this) ;"
-							src="../../static/images/circle.png"
-							th:src="@{/images/circle_red.png}"
-							class="rounded my-object-image" alt="Cinque Terre" /> <img
-							id=MyObjectImage_2 onclick="onClickMyObjectImage(this) ;"
-							src="../../static/images/circle.png"
-							th:src="@{/images/circle_green.png}"
-							class="rounded my-object-image" alt="Cinque Terre" /> <img
-							id=MyObjectImage_3 onclick="onClickMyObjectImage(this) ;"
-							src="../../static/images/circle.png"
-							th:src="@{/images/circle_green.png}"
-							class="rounded my-object-image" alt="Cinque Terre" /> <img
-							id=MyObjectImage_4 onclick="onClickMyObjectImage(this) ;"
-							src="../../static/images/circle.png"
-							th:src="@{/images/circle_red.png}"
-							class="rounded my-object-image" alt="Cinque Terre" /> <img
-							id=MyObjectImage_5 onclick="onClickMyObjectImage(this) ;"
-							src="../../static/images/circle.png"
-							th:src="@{/images/circle_red.png}"
-							class="rounded my-object-image" alt="Cinque Terre" /> <img
-							id=MyObjectImage_6 onclick="onClickMyObjectImage(this) ;"
-							src="../../static/images/circle.png"
-							th:src="@{/images/circle_red.png}"
-							class="rounded my-object-image" alt="Cinque Terre" /> <img
-							id=MyObjectImage_7 onclick="onClickMyObjectImage(this) ;"
-							src="../../static/images/circle.png"
-							th:src="@{/images/circle_red.png}"
-							class="rounded my-object-image" alt="Cinque Terre" /> <img
-							id=MyObjectImage_8 onclick="onClickMyObjectImage(this) ;"
-							src="../../static/images/circle.png"
-							th:src="@{/images/circle_green.png}"
-							class="rounded my-object-image" alt="Cinque Terre" /> <img
-							id=MyObjectImage_9 onclick="onClickMyObjectImage(this) ;"
-							src="../../static/images/circle.png"
-							th:src="@{/images/circle_green.png}"
-							class="rounded my-object-image" alt="Cinque Terre" /> <img
-							id=MyObjectImage_10 onclick="onClickMyObjectImage(this) ;"
-							src="../../static/images/circle.png"
-							th:src="@{/images/circle_green.png}"
-							class="rounded my-object-image" alt="Cinque Terre" />
-
-					</div>
-					<!-- The Modal -->
-					<div id="myModal" class="modal container">
-						<!-- Modal content -->
-						<div class="modal-content ">
-							<span id="myModal-close" onclick="onClickCloseModal(this) ;" class="close">&times;</span>
-							<div id=modal-content-detail-img class="modal-content-detail-img">
-							<div id=FixImage3 class="fix_image" style="display:block; " >
-								<img id=MyBackgroundImage2 src="../../static/images/home_v1.jpg"
-									th:src="@{/images/home_v2.jpg}"
-									class="rounded my-background-image" alt="Cinque Terre" />
-								<img
-							id=MyObjectImage_1x1 onclick="onClickMyObjectImageDetail(this) ;"
-							src="../../static/images/circle.png"
-							th:src="@{/images/marketplace_red.png}"
-							class="rounded my-object-image" alt="Cinque Terre" /> <img
-							id=MyObjectImage_1x2 onclick="onClickMyObjectImageDetail(this) ;"
-							src="../../static/images/circle.png"
-							th:src="@{/images/marketplace_green.png}"
-							class="rounded my-object-image" alt="Cinque Terre" /> <img
-							id=MyObjectImage_1x3 onclick="onClickMyObjectImageDetail(this) ;"
-							src="../../static/images/circle.png"
-							th:src="@{/images/marketplace_green.png}"
-							class="rounded my-object-image" alt="Cinque Terre" />
-							</div>
-							</div>
-							<div id=modal-content-detail class="modal-content-detail">
-								
-							</div>
-						</div>
-					</div>
-					<div id=FixImage2 class="fix_image" style="display: none;" >
-						<img id=MyBackgroundImage2 src="../../static/images/home_v1.jpg"
-							th:src="@{/images/home_v1.jpg}"
-							class="rounded my-background-image" alt="Cinque Terre" />
-					</div>
-					
-					<div id="myModalDetail" class="modal container">
-						<!-- Modal content -->
-						<div class="modal-content ">
-							<span id="myModalDetail-close" onclick="onClickCloseModalDetail(this) ;" class="close">&times;</span>
-							
-							<div id=modal-content-detail2 class="modal-content-detail2">
-								
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 </body>

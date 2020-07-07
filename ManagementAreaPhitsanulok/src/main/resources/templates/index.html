@@ -1,15 +1,139 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
 
 <title>Management Area</title>
 
 <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+<script th:inline="javascript">
+	window.onload = function() {
+		onReloadObj() ;
+	};
+	window.onresize = function() {
+		onReloadObj() ;
+	};
+	
+	function onReloadObj() {
+		var data = [];
+
+		data.push(JSON.parse('{ "id":"1", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.20" , "width" : "0.35" }'));
+		data.push(JSON.parse('{ "id":"2", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.25" , "width" : "0.50" }'));
+		data.push(JSON.parse('{ "id":"3", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.30" , "width" : "0.80" }'));
+		data.push(JSON.parse('{ "id":"4", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.40" , "width" : "0.30" }'));
+		data.push(JSON.parse('{ "id":"5", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.40" , "width" : "0.40" }'));
+		data.push(JSON.parse('{ "id":"6", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.45" , "width" : "0.70" }'));
+		data.push(JSON.parse('{ "id":"7", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.50" , "width" : "0.50" }'));
+		data.push(JSON.parse('{ "id":"8", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.50" , "width" : "0.83" }'));
+		data.push(JSON.parse('{ "id":"9", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.80" , "width" : "0.45" }'));
+		data.push(JSON.parse('{ "id":"10", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.80" , "width" : "0.60" }'));
+		//data.push(JSON.parse('{ "id":"11", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.00" , "width" : "0.0" }'));
+		//data.push(JSON.parse('{ "id":"12", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "1.00" , "width" : "1.0" }'));
+
+		var fixImage = document.getElementById("DIVMyObjectImage");
+		fixImage.innerHTML = '';
+		var v_img = document.getElementById('MyBackgroundImage');
+		var bgh = v_img.clientHeight ;
+		var bgw = v_img.clientWidth ;
+		var obh = document.getElementById('MyObjectImage').height;
+		var obw = document.getElementById('MyObjectImage').width;
+		
+		data.forEach(function(obj) {
+			var objimg = document.getElementById('MyObjectImage');
+			var clone = objimg.cloneNode(true);
+			clone.id = obj.id ;
+			clone.style.display = "block";
+			clone.style.top = ((bgh * obj.height) - obh) + "px";
+			clone.style.left = ((bgw * obj.width) - (obw / 2))+ "px";
+			fixImage.appendChild(clone);
+		
+		});
+	}
+	
+	function onClickMyObjectImage(e) {
+		var modal = document.getElementById("myModal");
+		modal.style.display = "block";
+		
+		var detailimg = document.getElementById("myModal-MyBackgroundImage");
+		var FixImage3 = document.getElementById('modal-content-detail-img');
+		FixImage3.style.height = detailimg.clientHeight + "px";
+	}
+	
+	
+	
+	
+	window.onclick = function(event) {
+		var modal = document.getElementById("myModal");
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+		var modal2 = document.getElementById("myModalDetail");
+		if (event.target == modal2) {
+			modal2.style.display = "none";
+		}
+	}
+	
+	function onClickCloseModal(e) {
+		var modal = document.getElementById("myModal");
+		modal.style.display = "none";
+	}
+	function onClickCloseModalDetail(e) {
+		var modal = document.getElementById("myModalDetail");
+		modal.style.display = "none";
+	}
+</script>
 </head>
 <body>
-
 	<div class="container">
 		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+		<h2>
+			<p th:text="#{rent.summary}" />
+		</h2>
+		<div>
+			<div class="row text-center">
+				<div id=FixImage class="fix_image_position">
+				<img id=MyObjectImage style=" top: 0px;left: 0px;"
+					onclick="onClickMyObjectImage(this) ;"
+					src="../../static/images/circle_red.png"
+					th:src="@{/images/circle_red.png}" class="rounded my-object-image" />
+				<img id=MyBackgroundImage src="../../static/images/home_v1.jpg"
+					th:src="@{/images/home_v1.jpg}"
+					class="rounded my-background-image" /> 
+				<div id="DIVMyObjectImage"></div>
+				
+				
+				</div>
+				
+				
+					<!-- The Modal -->
+					<div id="myModal" class="modal container">
+						<!-- Modal content -->
+						
+						<div class="modal-content ">
+						
+							<div id=modal-content-detail-img class="modal-content-detail-img">
+								<div id=FixImage-myModal class="fix_image" style="display:block; " >
+								
+								<img id=myModal-MyBackgroundImage src="../../static/images/home_v3.jpg"
+									th:src="@{/images/home_v3.jpg}"
+									class="rounded my-background-image" alt="Cinque Terre" />
+									
+								<img id=MyObjectImage_1x1 onclick="onClickMyObjectImageDetail(this) ;"
+								src="../../static/images/marketplace_red"
+								th:src="@{/images/marketplace_red.png}"
+								class="rounded my-object-image" alt="Cinque Terre" />
+								
+								</div>
+							</div>
+							<div id=modal-content-detail class="modal-content-detail">
+								
+							</div>
+							<span id="myModal-close" onclick="onClickCloseModal(this) ;" class="myModal-close close">&times;</span>
+						</div>
+					</div>
+			</div>
+		</div>
 	</div>
+
 </body>
 </html>
