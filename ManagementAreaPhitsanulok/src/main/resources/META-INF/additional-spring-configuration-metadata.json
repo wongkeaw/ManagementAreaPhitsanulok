@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "rent.area",
+  "type": "java.lang.String",
+  "description": "A description for 'rent.area'"
+}]}

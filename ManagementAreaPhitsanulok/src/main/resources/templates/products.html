@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title>Management Area</title>
+
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+	<div class="container">
+		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+		<div th:if="${not #lists.isEmpty(products)}">
+			<h2><p th:text="#{rent.area.list}"/></h2>
+			<table class="table table-striped">
+				<tr>
+					<th>Id</th>
+					<th><p th:text="#{rent.area}"/></th>
+					<th><p th:text="#{rent.Description}"/></th>
+					<th><p th:text="#{rent.RentalArrears}"/></th>
+					<th>View</th>
+					<th>Edit</th>
+				</tr>
+				<tr th:each="product : ${products}">
+					<td th:text="${product.id}"><a href="/product/${product.id}">Id</a></td>
+					<td th:text="${product.productId}"><p th:text="#{rent.area}"/></td>
+					<td th:text="${product.description}"><p th:text="#{rent.Description}"/></td>
+					<td th:text="${product.price}"><p th:text="#{rent.RentalArrears}"/></td>
+					<td><a th:href="${ '/product/' + product.id}">View</a></td>
+					<td><a th:href="${'/product/edit/' + product.id}">Edit</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
