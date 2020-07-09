@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>aran.tech</groupId>
 	<artifactId>ManagementAreaPhitsanulok</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>ManagementAreaPhitsanulok</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -35,6 +35,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		
 		<!--WebJars-->
 		<dependency>
 			<groupId>org.webjars</groupId>

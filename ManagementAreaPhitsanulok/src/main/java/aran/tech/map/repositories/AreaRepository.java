@@ -1,9 +1,10 @@
 package aran.tech.map.repositories;
 
-import aran.tech.map.domain.Product;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import aran.tech.map.domain.Area;
 @Repository
-public interface ProductRepository extends CrudRepository<Product, Integer>{
+public interface AreaRepository extends CrudRepository<Area, Long>{
+
 }

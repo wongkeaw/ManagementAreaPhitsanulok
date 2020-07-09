@@ -26,6 +26,10 @@
 		max-height: 4vh;
 		max-width: 4vw;
 	}
+	.myModal-close {
+		max-height: 4vh;
+		max-width: 4vw;
+	}
 }
 /* half screen , ipad pro */
 @media only screen and (min-width: 56.25rem) and (max-width: 112.5rem) {
@@ -33,10 +37,18 @@
 		max-height: 3vh;
 		max-width: 3vw;
 	}
+	.myModal-close {
+		max-height: 3vh;
+		max-width: 3vw;
+	}
 }
 /* ipad , iphone , mobile */
 @media only screen and (max-width: 56.25rem) {
 	.my-object-image {
+		max-height: 2vh;
+		max-width: 2vw;
+	}
+	.myModal-close {
 		max-height: 2vh;
 		max-width: 2vw;
 	}
@@ -53,4 +65,23 @@
 	top: 0px;
 	right: 0px;
 	z-index: 100;
+}
+
+.sub-modal-content {
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+.sub-myModal-DIVMyObjectImage {
+	position:absolute;
+	padding: 5vh;
+	top:0px;
+	left:0px;
+	z-index: 100 ;
+	font-size: medium;
+	color: orange;
+}
+
+.modal-container {
+	padding-top: 3vh;
 }

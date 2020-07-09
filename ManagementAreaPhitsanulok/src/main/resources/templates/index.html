@@ -12,50 +12,88 @@
 	window.onresize = function() {
 		onReloadObj() ;
 	};
-	
-	function onReloadObj() {
-		var data = [];
-
-		data.push(JSON.parse('{ "id":"1", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.20" , "width" : "0.35" }'));
-		data.push(JSON.parse('{ "id":"2", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.25" , "width" : "0.50" }'));
-		data.push(JSON.parse('{ "id":"3", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.30" , "width" : "0.80" }'));
-		data.push(JSON.parse('{ "id":"4", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.40" , "width" : "0.30" }'));
-		data.push(JSON.parse('{ "id":"5", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.40" , "width" : "0.40" }'));
-		data.push(JSON.parse('{ "id":"6", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.45" , "width" : "0.70" }'));
-		data.push(JSON.parse('{ "id":"7", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.50" , "width" : "0.50" }'));
-		data.push(JSON.parse('{ "id":"8", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.50" , "width" : "0.83" }'));
-		data.push(JSON.parse('{ "id":"9", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.80" , "width" : "0.45" }'));
-		data.push(JSON.parse('{ "id":"10", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.80" , "width" : "0.60" }'));
-		//data.push(JSON.parse('{ "id":"11", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "0.00" , "width" : "0.0" }'));
-		//data.push(JSON.parse('{ "id":"12", "area": "zone A" , "describe": "gift shop", "RentalArrears":"1,000,000" , "height": "1.00" , "width" : "1.0" }'));
-
+	function onReloadObj(){
+		var v_img = document.getElementById('MyBackgroundImage');
 		var fixImage = document.getElementById("DIVMyObjectImage");
 		fixImage.innerHTML = '';
-		var v_img = document.getElementById('MyBackgroundImage');
-		var bgh = v_img.clientHeight ;
-		var bgw = v_img.clientWidth ;
-		var obh = document.getElementById('MyObjectImage').height;
-		var obw = document.getElementById('MyObjectImage').width;
-		
-		data.forEach(function(obj) {
-			var objimg = document.getElementById('MyObjectImage');
-			var clone = objimg.cloneNode(true);
-			clone.id = obj.id ;
-			clone.style.display = "block";
-			clone.style.top = ((bgh * obj.height) - obh) + "px";
-			clone.style.left = ((bgw * obj.width) - (obw / 2))+ "px";
-			fixImage.appendChild(clone);
-		
+		$.getJSON("/api/area/1", function(result){
+			v_img.src = "/images/"+result.image;
+			var bgh = v_img.clientHeight ;
+			var bgw = v_img.clientWidth ;
+			var obh = document.getElementById('MyObjectImage').height;
+			var obw = document.getElementById('MyObjectImage').width;
+		      $.each(result.subarea, function(i, obj){
+					var objimg = document.getElementById('MyObjectImage');
+					var clone = objimg.cloneNode(true);
+					clone.id = 'MyObjectImage-'+obj.id ;
+					clone.style.display = "block";
+					if (obj.rentalArrears == "0"){
+						clone.src = "/images/circle_green.png";
+					}
+					clone.onclick = function() { onClickZone(this , obj ) ; };
+					clone.style.top = ((bgh * obj.positionY) - obh) + "px";
+					clone.style.left = ((bgw * obj.positionx) - (obw / 2))+ "px";
+					fixImage.appendChild(clone);
+		      });
 		});
 	}
-	
-	function onClickMyObjectImage(e) {
+	function onClickZone(e, subarea) {
+		
 		var modal = document.getElementById("myModal");
 		modal.style.display = "block";
 		
 		var detailimg = document.getElementById("myModal-MyBackgroundImage");
-		var FixImage3 = document.getElementById('modal-content-detail-img');
-		FixImage3.style.height = detailimg.clientHeight + "px";
+		var modalContent = document.getElementById('myModal-modal-content-detail-img');
+		modalContent.style.height = detailimg.clientHeight + "px";
+		
+		var fixImage = document.getElementById("myModal-DIVMyObjectImage");
+		fixImage.innerHTML = '';
+
+		var bgh = detailimg.clientHeight ;
+		var bgw = detailimg.clientWidth ;
+		var obh = document.getElementById('myModal-MyObjectImage').height;
+		var obw = document.getElementById('myModal-MyObjectImage').width;
+		
+	      $.each(subarea.shop, function(i, obj){
+				var objimg = document.getElementById('myModal-MyObjectImage');
+				var clone = objimg.cloneNode(true);
+				clone.id = 'myModal-MyObjectImage-'+obj.id ;
+				clone.style.display = "block";
+				if (obj.rentalArrears == "0"){
+					clone.src = "/images/marketplace_green.png";
+				}
+				clone.onclick = function() { onClickShop(this , obj ) ; };
+				clone.style.top = ((bgh * obj.positionY) - obh) + "px";
+				clone.style.left = ((bgw * obj.positionx) - (obw / 2))+ "px";
+				fixImage.appendChild(clone);
+	      });
+		
+	}
+	function onClickShop(e, shop) {
+		var modal = document.getElementById("sub-myModal");
+		modal.style.display = "block";
+		
+		var detailimg = document.getElementById("sub-myModal-MyBackgroundImage");
+		var modalContentImg = document.getElementById('sub-myModal-modal-content-detail-img');
+		modalContentImg.style.height = detailimg.clientHeight + "px";
+		var modalContent = document.getElementById('sub-myModal-DIVMyObjectImage');
+		
+		/*
+		var para = document.createElement("p");
+		var node = document.createTextNode(shop.describetion);
+		para.appendChild(node);
+		modalContent.appendChild(para);
+		*/
+		
+	}
+	
+	function onClickMyObjectImageDetail(e) {
+		var modal = document.getElementById("sub-myModal");
+		modal.style.display = "block";
+		
+		var detailimg = document.getElementById("sub-myModal-MyBackgroundImage");
+		var modalContent = document.getElementById('sub-myModal-modal-content-detail-img');
+		modalContent.style.height = detailimg.clientHeight + "px";
 	}
 	
 	
@@ -66,7 +104,7 @@
 		if (event.target == modal) {
 			modal.style.display = "none";
 		}
-		var modal2 = document.getElementById("myModalDetail");
+		var modal2 = document.getElementById("sub-myModal");
 		if (event.target == modal2) {
 			modal2.style.display = "none";
 		}
@@ -76,8 +114,8 @@
 		var modal = document.getElementById("myModal");
 		modal.style.display = "none";
 	}
-	function onClickCloseModalDetail(e) {
-		var modal = document.getElementById("myModalDetail");
+	function onClickCloseSubModal(e) {
+		var modal = document.getElementById("sub-myModal");
 		modal.style.display = "none";
 	}
 </script>
@@ -93,10 +131,9 @@
 			<div class="row text-center">
 				<div id=FixImage class="fix_image_position">
 				<img id=MyObjectImage style=" top: 0px;left: 0px;"
-					onclick="onClickMyObjectImage(this) ;"
 					src="../../static/images/circle_red.png"
 					th:src="@{/images/circle_red.png}" class="rounded my-object-image" />
-				<img id=MyBackgroundImage src="../../static/images/home_v1.jpg"
+				<img id=MyBackgroundImage src="../../static/images/home_v3.jpg"
 					th:src="@{/images/home_v1.jpg}"
 					class="rounded my-background-image" /> 
 				<div id="DIVMyObjectImage"></div>
@@ -104,36 +141,82 @@
 				
 				</div>
 				
-				
+
+			</div>
+		</div>
+	</div>
 					<!-- The Modal -->
-					<div id="myModal" class="modal container">
+					<div id="myModal" class="modal ">
 						<!-- Modal content -->
-						
+						<div class="container" >
+						<div class="modal-container" >
 						<div class="modal-content ">
 						
-							<div id=modal-content-detail-img class="modal-content-detail-img">
-								<div id=FixImage-myModal class="fix_image" style="display:block; " >
-								
-								<img id=myModal-MyBackgroundImage src="../../static/images/home_v3.jpg"
-									th:src="@{/images/home_v3.jpg}"
-									class="rounded my-background-image" alt="Cinque Terre" />
+							<div id=myModal-modal-content-detail-img class="modal-content-detail-img">
+								<div id=myModal-FixImage class="fix_image" style="display:block; " >
 									
-								<img id=MyObjectImage_1x1 onclick="onClickMyObjectImageDetail(this) ;"
+								<img id=myModal-MyObjectImage
 								src="../../static/images/marketplace_red"
 								th:src="@{/images/marketplace_red.png}"
 								class="rounded my-object-image" alt="Cinque Terre" />
 								
+								<img id=myModal-MyBackgroundImage src="../../static/images/home_v3.jpg"
+									th:src="@{/images/home_v2.jpg}"
+									class="rounded my-background-image" alt="Cinque Terre" />
+								
+								<div id="myModal-DIVMyObjectImage"></div>
 								</div>
 							</div>
 							<div id=modal-content-detail class="modal-content-detail">
 								
 							</div>
-							<span id="myModal-close" onclick="onClickCloseModal(this) ;" class="myModal-close close">&times;</span>
+							<img id=myModal-close src="../../static/images/close.png"
+							 	onclick="onClickCloseModal(this) ;"
+								th:src="@{/images/close.png}"
+								class="myModal-close close" alt="Cinque Terre" />
+						</div>
+						</div>
 						</div>
 					</div>
-			</div>
-		</div>
-	</div>
+					
+					<div id="sub-myModal" class="modal ">
+						<!-- Modal content -->
+						<div class="container" >
+						<div class="modal-container" >
+						<div class="sub-modal-content ">
+							<div class="modal-content ">
+							<div id=sub-myModal-modal-content-detail-img class="modal-content-detail-img">
+								<div id=sub-myModal-FixImage class="fix_image" style="display:block; " >
+								
+								<img id=sub-myModal-MyBackgroundImage src="../../static/images/home_v3.jpg"
+									th:src="@{/images/home_v3.jpg}"
+									class="rounded my-background-image" alt="Cinque Terre" />
+									
+								<div id="sub-myModal-DIVMyObjectImage" class="sub-myModal-DIVMyObjectImage" >
+								
+								<p th:text="#{rent.modal.numberLock}" />
+								<p th:text="#{rent.modal.lockStatus}" />
+								<p th:text="#{rent.modal.shopName}" />
+								<p th:text="#{rent.modal.productType}" />
+								<p th:text="#{rent.modal.sizeOfRentalSpace}" />
+								<p th:text="#{rent.modal.Rent}" />
+								<p th:text="#{rent.modal.RentPaid}" />
+								<p th:text="#{rent.modal.other}" />
+								
+								</div>
+								</div>
+							</div>
+							
+							<img id=sub-myModal-close src="../../static/images/close.png"
+							 	onclick="onClickCloseSubModal(this) ;"
+								th:src="@{/images/close.png}"
+								class="myModal-close close" alt="Cinque Terre" />
+							
+							</div>
+						</div>
+						</div>
+						</div>
+					</div>
 
 </body>
 </html>
