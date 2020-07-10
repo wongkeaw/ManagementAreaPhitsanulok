@@ -161,7 +161,7 @@ public class ProductLoader implements ApplicationListener<ContextRefreshedEvent>
 
 			log.info("Saved Shirt - id: " + shirt.getId());
 		}
-		insertArea();
+		//insertArea();
 
 	}
 
@@ -169,12 +169,12 @@ public class ProductLoader implements ApplicationListener<ContextRefreshedEvent>
 		{	
 			Area a = new Area();
 			a.setDescribetion("main image");
-			a.setImage("home_v1.jpg");
+			a.setImage("main_area.jpg");
 			Area r =areaRepository.save(a);
 			
 			SubArea sa = new SubArea() ;
 			sa.setDescribetion("main image");
-			sa.setImage("home_v1.jpg");
+			sa.setImage("main_area.jpg");
 			sa.setArea(r);
 			sa.setRentalArrears("0.0");
 			SubArea s2 = subAreaRepository.save(sa) ;
@@ -182,7 +182,7 @@ public class ProductLoader implements ApplicationListener<ContextRefreshedEvent>
 			Shop st = new Shop() ;
 
 			st.setDescribetion("main image");
-			st.setImage("home_v1.jpg");
+			st.setImage("main_area.jpg");
 			st.setSubArea(s2);
 			st.setRentalArrears("0.0");
 			st.setDueDate(new Date());

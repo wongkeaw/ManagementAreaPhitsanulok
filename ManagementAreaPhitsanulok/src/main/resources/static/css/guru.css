@@ -54,7 +54,7 @@
 	}
 }
 
-.modal-content-detail-img #myModal-MyBackgroundImage {
+.modal-content-detail-img .myModal-MyBackgroundImage {
    top:0px;
    left:0px;
    width: 100%;
@@ -66,7 +66,14 @@
 	right: 0px;
 	z-index: 100;
 }
-
+.modal-content .myModal-describe {
+	position: absolute;
+	padding:3%;
+	top: 0px;
+	left: 0px;
+	color:red ;
+	z-index: 100;
+}
 .sub-modal-content {
 	padding-left: 10%;
 	padding-right: 10%;
@@ -79,9 +86,9 @@
 	left:0px;
 	z-index: 100 ;
 	font-size: medium;
-	color: orange;
+	color: red;
 }
 
 .modal-container {
-	padding-top: 3vh;
+	padding: 3vh;
 }

@@ -11,8 +11,10 @@
 	};
 	window.onresize = function() {
 		onReloadObj() ;
+		var modal = document.getElementById("myModal");
+			modal.style.display = "none";
 	};
-	function onReloadObj(){
+	function onReloadObj(action){
 		var v_img = document.getElementById('MyBackgroundImage');
 		var fixImage = document.getElementById("DIVMyObjectImage");
 		fixImage.innerHTML = '';
@@ -22,6 +24,7 @@
 			var bgw = v_img.clientWidth ;
 			var obh = document.getElementById('MyObjectImage').height;
 			var obw = document.getElementById('MyObjectImage').width;
+			
 		      $.each(result.subarea, function(i, obj){
 					var objimg = document.getElementById('MyObjectImage');
 					var clone = objimg.cloneNode(true);
@@ -30,19 +33,41 @@
 					if (obj.rentalArrears == "0"){
 						clone.src = "/images/circle_green.png";
 					}
-					clone.onclick = function() { onClickZone(this , obj ) ; };
+					// myModal-MyBackgroundImage
+					clone.onclick = function() { onClickZoneBlackGroup(this , obj ) ; };
 					clone.style.top = ((bgh * obj.positionY) - obh) + "px";
 					clone.style.left = ((bgw * obj.positionx) - (obw / 2))+ "px";
 					fixImage.appendChild(clone);
+					
 		      });
+				var modalbg = document.getElementById("myModal-DIVMyBackgroundImage"); 
+				modalbg.style.display = "block";
+				modalbg.innerHTML = "";
+			      $.each(result.subarea, function(i, obj){
+						var detailimg = document.getElementById("myModal-MyBackgroundImage");
+						detailimg.src = "/images/"+obj.image ;
+						var clonebg = detailimg.cloneNode(true);
+						clonebg.id = clonebg.id+"-"+obj.id ;
+						modalbg.appendChild(clonebg);
+			      });
 		});
 	}
-	function onClickZone(e, subarea) {
-		
+	function onClickZoneBlackGroup(e, subarea) {
 		var modal = document.getElementById("myModal");
 		modal.style.display = "block";
 		
 		var detailimg = document.getElementById("myModal-MyBackgroundImage");
+		detailimg.src = "/images/"+subarea.image ;
+		var detailimgx = document.getElementById("myModal-DIVMyBackgroundImage");
+		onClickZone(e, subarea) ;
+		detailimgx.style.display = "none";
+	}
+	
+	function onClickZone(e, subarea) {
+		var modal = document.getElementById("myModal");
+		modal.style.display = "block";
+		
+		var detailimg = document.getElementById("myModal-MyBackgroundImage-"+subarea.id);
 		var modalContent = document.getElementById('myModal-modal-content-detail-img');
 		modalContent.style.height = detailimg.clientHeight + "px";
 		
@@ -67,6 +92,9 @@
 				clone.style.left = ((bgw * obj.positionx) - (obw / 2))+ "px";
 				fixImage.appendChild(clone);
 	      });
+	    var describe = document.getElementById('myModal-describe') ;
+	    describe.innerHTML = '';
+	    describe.appendChild(document.createTextNode(subarea.describetion));
 		
 	}
 	function onClickShop(e, shop) {
@@ -77,13 +105,6 @@
 		var modalContentImg = document.getElementById('sub-myModal-modal-content-detail-img');
 		modalContentImg.style.height = detailimg.clientHeight + "px";
 		var modalContent = document.getElementById('sub-myModal-DIVMyObjectImage');
-		
-		/*
-		var para = document.createElement("p");
-		var node = document.createTextNode(shop.describetion);
-		para.appendChild(node);
-		modalContent.appendChild(para);
-		*/
 		
 	}
 	
@@ -96,23 +117,25 @@
 		modalContent.style.height = detailimg.clientHeight + "px";
 	}
 	
-	
-	
-	
 	window.onclick = function(event) {
 		var modal = document.getElementById("myModal");
 		if (event.target == modal) {
 			modal.style.display = "none";
+			var detailimgx = document.getElementById("myModal-DIVMyBackgroundImage");
+			detailimgx.style.display = "block";
 		}
 		var modal2 = document.getElementById("sub-myModal");
 		if (event.target == modal2) {
 			modal2.style.display = "none";
 		}
 	}
+
 	
 	function onClickCloseModal(e) {
 		var modal = document.getElementById("myModal");
 		modal.style.display = "none";
+		var detailimgx = document.getElementById("myModal-DIVMyBackgroundImage");
+		detailimgx.style.display = "block";
 	}
 	function onClickCloseSubModal(e) {
 		var modal = document.getElementById("sub-myModal");
@@ -134,7 +157,7 @@
 					src="../../static/images/circle_red.png"
 					th:src="@{/images/circle_red.png}" class="rounded my-object-image" />
 				<img id=MyBackgroundImage src="../../static/images/home_v3.jpg"
-					th:src="@{/images/home_v1.jpg}"
+					th:src="@{/images/main_area.jpg}"
 					class="rounded my-background-image" /> 
 				<div id="DIVMyObjectImage"></div>
 				
@@ -159,12 +182,13 @@
 								src="../../static/images/marketplace_red"
 								th:src="@{/images/marketplace_red.png}"
 								class="rounded my-object-image" alt="Cinque Terre" />
-								
-								<img id=myModal-MyBackgroundImage src="../../static/images/home_v3.jpg"
+								<div id="myModal-DIVMyBackgroundImage"> </div>
+								<img id=myModal-MyBackgroundImage src="../../static/images/home_v2.jpg"
 									th:src="@{/images/home_v2.jpg}"
-									class="rounded my-background-image" alt="Cinque Terre" />
+									class="rounded my-background-image myModal-MyBackgroundImage" alt="Cinque Terre" />
+									
 								
-								<div id="myModal-DIVMyObjectImage"></div>
+								<div id="myModal-DIVMyObjectImage"/>
 								</div>
 							</div>
 							<div id=modal-content-detail class="modal-content-detail">
@@ -174,6 +198,8 @@
 							 	onclick="onClickCloseModal(this) ;"
 								th:src="@{/images/close.png}"
 								class="myModal-close close" alt="Cinque Terre" />
+								
+								<p id=myModal-describe class=myModal-describe />
 						</div>
 						</div>
 						</div>
