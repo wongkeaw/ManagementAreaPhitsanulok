@@ -1,0 +1,94 @@
+.fix_image_position {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.my-background-image {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	max-width: 100%;
+	width: auto;
+	height: auto;
+	left: 0px;
+}
+
+.my-object-image {
+	position: absolute;
+	width: auto;
+	height: auto;
+	cursor: pointer;
+}
+/* laptio screen => FHD */
+@media only screen and (min-width: 112.5rem) {
+	.my-object-image {
+		max-height: 4vh;
+		max-width: 4vw;
+	}
+	.myModal-close {
+		max-height: 4vh;
+		max-width: 4vw;
+	}
+}
+/* half screen , ipad pro */
+@media only screen and (min-width: 56.25rem) and (max-width: 112.5rem) {
+	.my-object-image {
+		max-height: 3vh;
+		max-width: 3vw;
+	}
+	.myModal-close {
+		max-height: 3vh;
+		max-width: 3vw;
+	}
+}
+/* ipad , iphone , mobile */
+@media only screen and (max-width: 56.25rem) {
+	.my-object-image {
+		max-height: 2vh;
+		max-width: 2vw;
+	}
+	.myModal-close {
+		max-height: 2vh;
+		max-width: 2vw;
+	}
+}
+
+.modal-content-detail-img .myModal-MyBackgroundImage {
+   top:0px;
+   left:0px;
+   width: 100%;
+   max-width: 100%;
+}
+.modal-content .myModal-close {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	z-index: 100;
+}
+.modal-content .myModal-describe {
+	position: absolute;
+	padding:3%;
+	top: 0px;
+	left: 0px;
+	color:red ;
+	z-index: 100;
+}
+.sub-modal-content {
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+.sub-myModal-DIVMyObjectImage {
+	position:absolute;
+	padding: 5vh;
+	top:0px;
+	left:0px;
+	z-index: 100 ;
+	font-size: medium;
+	color: red;
+}
+
+.modal-container {
+	padding: 3vh;
+}
