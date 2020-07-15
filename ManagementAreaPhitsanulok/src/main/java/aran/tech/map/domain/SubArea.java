@@ -40,7 +40,7 @@ public class SubArea implements Serializable {
 	
 	@Getter
     @Setter
-	private String describetion ;
+	private String description ;
 	
 	@Getter
     @Setter

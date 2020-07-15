@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title>Management Area</title>
+
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+	<div class="container">
+		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+		<h2><a th:text="#{rent.area.list}"></a></h2>
+		<div>
+			<form class="form-horizontal">
+			
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><a th:text="#{rent.area}"></a></label>
+					<div class="col-sm-10">
+						<p class="form-control-static" th:text="${shop.subArea.id}"></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><a th:text="#{rent.area}"></a></label>
+					<div class="col-sm-10">
+						<p class="form-control-static" th:text="${shop.id}"></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><a th:text="#{rent.Description}"></a></label>
+					<div class="col-sm-10">
+						<p class="form-control-static" th:text="${shop.description}"></p>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

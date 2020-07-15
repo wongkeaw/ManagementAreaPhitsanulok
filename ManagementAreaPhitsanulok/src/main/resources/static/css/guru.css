@@ -11,7 +11,6 @@
 	max-width: 100%;
 	width: auto;
 	height: auto;
-	left: 0px;
 }
 
 .my-object-image {
@@ -30,6 +29,11 @@
 		max-height: 4vh;
 		max-width: 4vw;
 	}
+	.sub-myModal-show-info {
+		max-height: 8vh;
+		max-width: 8vw;
+		cursor: pointer;
+	}
 }
 /* half screen , ipad pro */
 @media only screen and (min-width: 56.25rem) and (max-width: 112.5rem) {
@@ -41,6 +45,11 @@
 		max-height: 3vh;
 		max-width: 3vw;
 	}
+	.sub-myModal-show-info {
+		max-height: 6vh;
+		max-width: 6vw;
+		cursor: pointer;
+	}
 }
 /* ipad , iphone , mobile */
 @media only screen and (max-width: 56.25rem) {
@@ -51,6 +60,11 @@
 	.myModal-close {
 		max-height: 2vh;
 		max-width: 2vw;
+	}
+	.sub-myModal-show-info {
+		max-height: 4vh;
+		max-width: 4vw;
+		cursor: pointer;
 	}
 }
 
@@ -75,8 +89,10 @@
 	z-index: 100;
 }
 .sub-modal-content {
-	padding-left: 10%;
-	padding-right: 10%;
+	padding-top : 5% ;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-bottom: 5%;
 }
 
 .sub-myModal-DIVMyObjectImage {
@@ -88,7 +104,23 @@
 	font-size: medium;
 	color: red;
 }
-
+.sub-myModal-DIVMyObjectImage a {
+	color: green;
+}
 .modal-container {
 	padding: 3vh;
+}
+.sub-modal-content-detail-img {
+   top:0px;
+   left:0px;
+   width: 100%;
+   max-height:90% ;
+}
+.sub-myModal-MyBackgroundImage {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	max-width: 100%;
+	width: auto;
+	height: auto;
 }

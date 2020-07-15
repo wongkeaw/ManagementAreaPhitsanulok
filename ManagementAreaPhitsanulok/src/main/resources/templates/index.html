@@ -13,6 +13,8 @@
 		onReloadObj() ;
 		var modal = document.getElementById("myModal");
 			modal.style.display = "none";
+		var submodal = document.getElementById("sub-myModal");
+			submodal.style.display = "none";
 	};
 	function onReloadObj(action){
 		var v_img = document.getElementById('MyBackgroundImage');
@@ -87,6 +89,9 @@
 				if (obj.rentalArrears == "0"){
 					clone.src = "/images/marketplace_green.png";
 				}
+				if (obj.status == "0"){
+					clone.src = "/images/marketplace_gray.png";
+				}
 				clone.onclick = function() { onClickShop(this , obj ) ; };
 				clone.style.top = ((bgh * obj.positionY) - obh) + "px";
 				clone.style.left = ((bgw * obj.positionx) - (obw / 2))+ "px";
@@ -94,7 +99,7 @@
 	      });
 	    var describe = document.getElementById('myModal-describe') ;
 	    describe.innerHTML = '';
-	    describe.appendChild(document.createTextNode(subarea.describetion));
+	    describe.appendChild(document.createTextNode(subarea.description));
 		
 	}
 	function onClickShop(e, shop) {
@@ -102,9 +107,34 @@
 		modal.style.display = "block";
 		
 		var detailimg = document.getElementById("sub-myModal-MyBackgroundImage");
-		var modalContentImg = document.getElementById('sub-myModal-modal-content-detail-img');
-		modalContentImg.style.height = detailimg.clientHeight + "px";
-		var modalContent = document.getElementById('sub-myModal-DIVMyObjectImage');
+		detailimg.src = "/images/"+shop.image ;
+		
+		var numberLock = document.getElementById('sub-myModal-numberLock');
+		numberLock.innerHTML = shop.numberLock ;
+		
+		var lockStatus = document.getElementById('sub-myModal-lockStatus');
+		lockStatus.innerHTML = shop.status ;
+		
+		var shopName = document.getElementById('sub-myModal-shopName');
+		shopName.innerHTML = shop.shopName ;
+		
+		var productType = document.getElementById('sub-myModal-productType');
+		productType.innerHTML = shop.productType ;
+		
+		var size = document.getElementById('sub-myModal-size');
+		size.innerHTML = shop.sizeSpace ;
+		
+		var rent = document.getElementById('sub-myModal-rent');
+		rent.innerHTML = shop.monthlyRent ;
+		
+		var rentalArrears = document.getElementById('sub-myModal-rentalArrears');
+		rentalArrears.innerHTML = shop.rentalArrears ;
+		
+		var other = document.getElementById('sub-myModal-other');
+		other.innerHTML = shop.other ;
+		
+		var info = document.getElementById("sub-myModal-show-info");
+		info.onclick = function() { window.location.href='/shop/'+shop.id };
 		
 	}
 	
@@ -156,15 +186,11 @@
 				<img id=MyObjectImage style=" top: 0px;left: 0px;"
 					src="../../static/images/circle_red.png"
 					th:src="@{/images/circle_red.png}" class="rounded my-object-image" />
-				<img id=MyBackgroundImage src="../../static/images/home_v3.jpg"
+				<img id=MyBackgroundImage src="../../static/images/SHOP01.jpg"
 					th:src="@{/images/main_area.jpg}"
 					class="rounded my-background-image" /> 
 				<div id="DIVMyObjectImage"></div>
-				
-				
 				</div>
-				
-
 			</div>
 		</div>
 	</div>
@@ -211,24 +237,25 @@
 						<div class="modal-container" >
 						<div class="sub-modal-content ">
 							<div class="modal-content ">
-							<div id=sub-myModal-modal-content-detail-img class="modal-content-detail-img">
-								<div id=sub-myModal-FixImage class="fix_image" style="display:block; " >
+							<div id=sub-myModal-modal-content-detail-img class="sub-modal-content-detail-img">
+								<div id=sub-myModal-FixImage class="fix_image_position" style="display:block; " >
 								
-								<img id=sub-myModal-MyBackgroundImage src="../../static/images/home_v3.jpg"
-									th:src="@{/images/home_v3.jpg}"
-									class="rounded my-background-image" alt="Cinque Terre" />
+								<img id=sub-myModal-MyBackgroundImage src="../../static/images/SHOP01.jpg"
+									th:src="@{/images/SHOP01.jpg}"
+									class="rounded sub-myModal-MyBackgroundImage" alt="Cinque Terre" />
 									
 								<div id="sub-myModal-DIVMyObjectImage" class="sub-myModal-DIVMyObjectImage" >
-								
-								<p th:text="#{rent.modal.numberLock}" />
-								<p th:text="#{rent.modal.lockStatus}" />
-								<p th:text="#{rent.modal.shopName}" />
-								<p th:text="#{rent.modal.productType}" />
-								<p th:text="#{rent.modal.sizeOfRentalSpace}" />
-								<p th:text="#{rent.modal.Rent}" />
-								<p th:text="#{rent.modal.RentPaid}" />
-								<p th:text="#{rent.modal.other}" />
-								
+								<a th:text="#{rent.modal.numberLock}"></a><a id="sub-myModal-numberLock"></a><br>
+								<a th:text="#{rent.modal.lockStatus}"></a><a id="sub-myModal-lockStatus"></a><br>
+								<a th:text="#{rent.modal.shopName}"></a><a id="sub-myModal-shopName"></a><br>
+								<a th:text="#{rent.modal.productType}"></a><a id="sub-myModal-productType"></a><br>
+								<a th:text="#{rent.modal.sizeOfRentalSpace}"></a><a id="sub-myModal-size"></a><br>
+								<a th:text="#{rent.modal.Rent}"></a><a id="sub-myModal-rent"></a><br>
+								<a th:text="#{rent.modal.rentalArrears}"></a><a id="sub-myModal-rentalArrears"></a><br>
+								<a th:text="#{rent.modal.other}"></a><a id="sub-myModal-other"></a><br>
+								<img id=sub-myModal-show-info src="../../static/images/SHOW_INFO_RED.png"
+							 	th:src="@{/images/SHOW_INFO_RED.png}"
+								class="sub-myModal-show-info" alt="Cinque Terre" />
 								</div>
 								</div>
 							</div>

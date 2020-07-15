@@ -168,12 +168,12 @@ public class ProductLoader implements ApplicationListener<ContextRefreshedEvent>
 	private void insertArea() {
 		{	
 			Area a = new Area();
-			a.setDescribetion("main image");
+			a.setDescription("main image");
 			a.setImage("main_area.jpg");
 			Area r =areaRepository.save(a);
 			
 			SubArea sa = new SubArea() ;
-			sa.setDescribetion("main image");
+			sa.setDescription("main image");
 			sa.setImage("main_area.jpg");
 			sa.setArea(r);
 			sa.setRentalArrears("0.0");
@@ -181,7 +181,7 @@ public class ProductLoader implements ApplicationListener<ContextRefreshedEvent>
 			
 			Shop st = new Shop() ;
 
-			st.setDescribetion("main image");
+			st.setDescription("main image");
 			st.setImage("main_area.jpg");
 			st.setSubArea(s2);
 			st.setRentalArrears("0.0");
