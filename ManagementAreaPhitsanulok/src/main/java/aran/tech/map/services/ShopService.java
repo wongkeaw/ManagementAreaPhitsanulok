@@ -26,5 +26,9 @@ public class ShopService {
 		}
 		return null ;
 	}
+	
+	public void updateShop(Shop shop) {
+		shopRepository.save(shop) ;
+	}
 
 }

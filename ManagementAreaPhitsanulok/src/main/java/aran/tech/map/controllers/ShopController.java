@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import aran.tech.map.domain.Shop;
 import aran.tech.map.services.ShopService;
@@ -17,10 +18,19 @@ public class ShopController {
 	ShopService shopService ;
 	
     @RequestMapping("/{id}")
-    public String showProduct(@PathVariable Long id, Model model){
+    public String showShop(@PathVariable Long id, Model model){
     	Shop  shop  = shopService.findbyId(id) ;
     	
         model.addAttribute("shop", shop);
         return "shopshow";
     }
+    
+    @RequestMapping("/reserveSpace/{id}")
+    public ModelAndView updateShop(@PathVariable Long id, Model model){
+    	Shop  shop  = shopService.findbyId(id) ;
+    	shop.setStatus("1");
+    	shopService.updateShop(shop);
+        return new ModelAndView("redirect:/shop/"+id);
+    }
+   
 }
