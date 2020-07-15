@@ -46,7 +46,7 @@ public class ProductLoader implements ApplicationListener<ContextRefreshedEvent>
 			Product shirt = new Product();
 			shirt.setProductId("Zone A");
 			shirt.setDescription("ร้านพวก gift shop");
-			shirt.setPrice("1,000,000");
+			shirt.setPrice("0");
 			shirt.setImageUrl("");
 
 			productRepository.save(shirt);
@@ -82,7 +82,7 @@ public class ProductLoader implements ApplicationListener<ContextRefreshedEvent>
 			Product shirt = new Product();
 			shirt.setProductId("Zone D");
 			shirt.setDescription("ร้านพวก gift shop");
-			shirt.setPrice("12,000,000");
+			shirt.setPrice("0");
 			shirt.setImageUrl("");
 
 			productRepository.save(shirt);
@@ -94,7 +94,7 @@ public class ProductLoader implements ApplicationListener<ContextRefreshedEvent>
 			Product shirt = new Product();
 			shirt.setProductId("Zone E");
 			shirt.setDescription("ร้านพวก gift shop");
-			shirt.setPrice("2,000,000");
+			shirt.setPrice("0");
 			shirt.setImageUrl("");
 
 			productRepository.save(shirt);
@@ -118,7 +118,7 @@ public class ProductLoader implements ApplicationListener<ContextRefreshedEvent>
 			Product shirt = new Product();
 			shirt.setProductId("Zone G");
 			shirt.setDescription("ร้านพวก gift shop");
-			shirt.setPrice("12,000,000");
+			shirt.setPrice("0");
 			shirt.setImageUrl("");
 
 			productRepository.save(shirt);

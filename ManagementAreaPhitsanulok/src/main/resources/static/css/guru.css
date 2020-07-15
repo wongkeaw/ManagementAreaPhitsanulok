@@ -124,3 +124,8 @@
 	width: auto;
 	height: auto;
 }
+.form-horizontal .form-group.clear-magin {
+    margin-right:0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+}

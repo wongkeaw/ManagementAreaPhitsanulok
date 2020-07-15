@@ -23,7 +23,7 @@ public class Shop implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 7905753375294965549L;
-
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter
@@ -43,10 +43,6 @@ public class Shop implements Serializable {
 	@Getter
     @Setter
 	private String image ;	
-	
-	@Getter
-    @Setter
-	private String rentalArrears ;
 	
 	@Getter
     @Setter
@@ -82,11 +78,15 @@ public class Shop implements Serializable {
 	
 	@Getter
     @Setter
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date dueDate;
+	private String rentalArrears ;
 	
 	@Getter
     @Setter
 	private String other ;
+	
+	@Getter
+    @Setter
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private Date dueDate;
 	
 }
