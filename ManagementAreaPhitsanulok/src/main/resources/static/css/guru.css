@@ -31,8 +31,6 @@
   }
   .myModal-show-info {
     position: absolute;
-    top: 10%;
-    left: 3%;
     max-height: 8vh;
     max-width: 8vw;
     cursor: pointer;
@@ -55,8 +53,6 @@
   }
   .myModal-show-info {
     position: absolute;
-    top: 10%;
-    left: 3%;
     max-height: 6vh;
     max-width: 6vw;
     cursor: pointer;
@@ -79,8 +75,6 @@
   }
   .myModal-show-info {
     position: absolute;
-    top: 10%;
-    left: 3%;
     max-height: 4vh;
     max-width: 4vw;
     cursor: pointer;
@@ -106,10 +100,8 @@
 }
 .modal-content .myModal-describe {
   position: absolute;
-  padding-top: 3%;
-  padding-left: 3%;
-  top: 0px;
-  left: 0px;
+  top: 3vh;
+  left: 2vw;
   color: red;
   z-index: 100;
 }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title>Management Area</title>
+
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+<script th:inline="javascript">
+function reserveSpace(e) {
+	var shopId = document.getElementById("shop-id");
+	console.log(shopId.innerHTML) ;
+	window.location.href='/shop/reserveSpace/'+shopId.innerHTML
+}
+
+function invoice(e) {
+	window.open('/images/invoice.pdf') ;
+}
+
+
+</script>
+</head>
+<body>
+	<div class="container">
+		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+		<h2 th:text="#{area.info}"></h2>
+		<div>
+			<form class="form-horizontal">
+				<div class="form-group clear-magin">
+					<label class="col-sm-2 control-label"><p th:text="#{area.id}"></p></label>
+					<div class="col-sm-10 ">
+						<p class="form-control-static" id="shop-id" th:text="${area.id}"></p>
+					</div>
+				</div>
+				<div class="form-group clear-magin">
+					<label class="col-sm-2 control-label"><p th:text="#{area.description}"></p></label>
+					<div class="col-sm-10 ">
+						<p class="form-control-static" th:text="${area.description}"></p>
+					</div>
+				</div>
+			</form>
+			
+			<table class="table table-striped">
+				<tr>
+					<th><p th:text="#{area.subarea.id}"></p></th>
+					<th><p th:text="#{area.subarea.description}"></p></th>
+					<th><p th:text="#{area.subarea.rentalArrears}"></p></th>
+					<th><p th:text="#{area.subarea.view}"></p></th>
+				</tr>
+				<tr th:each="subarea : ${area.subarea}">
+					<td th:text="${subarea.id}"/>
+					<td th:text="${subarea.description}"/>
+					<td th:text="${subarea.rentalArrears}"/>
+					<td><a th:href="${ '/subarea/' + subarea.id}"><p th:text="#{subarea.shop.view}"></p></a></td>
+				</tr>
+			</table>
+			 
+		</div>
+	</div>
+</body>
+</html>

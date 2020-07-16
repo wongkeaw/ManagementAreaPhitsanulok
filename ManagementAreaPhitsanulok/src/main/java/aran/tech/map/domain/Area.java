@@ -39,7 +39,7 @@ public class Area implements Serializable {
     //OneToMany with SubArea
 	@Getter
     @Setter
-    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER , mappedBy = "area", orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY , mappedBy = "area", orphanRemoval = true)
     private List<SubArea> subarea = new ArrayList<>();
 
 }

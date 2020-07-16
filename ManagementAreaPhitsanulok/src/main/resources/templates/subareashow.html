@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title>Management Area</title>
+
+<!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+<script th:inline="javascript">
+function reserveSpace(e) {
+	var shopId = document.getElementById("shop-id");
+	console.log(shopId.innerHTML) ;
+	window.location.href='/shop/reserveSpace/'+shopId.innerHTML
+}
+
+function invoice(e) {
+	window.open('/images/invoice.pdf') ;
+}
+
+
+</script>
+</head>
+<body>
+	<div class="container">
+		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+		<h2 th:text="#{subarea.info}"></h2>
+		<div>
+			<form class="form-horizontal">
+			
+				<div class="form-group clear-magin">
+					<label class="col-sm-2 control-label"><p th:text="#{subarea.id}"></p></label>
+					<div class="col-sm-10 ">
+						<a th:href="${ '/area/' + subarea.area.id}"><p class="form-control-static" id="shop-id" th:text="${subarea.area.description}"></p></a>
+					</div>
+				</div>
+				<div class="form-group clear-magin">
+					<label class="col-sm-2 control-label"><p th:text="#{subarea.id}"></p></label>
+					<div class="col-sm-10 ">
+						<p class="form-control-static" id="shop-id" th:text="${subarea.id}"></p>
+					</div>
+				</div>
+				<div class="form-group clear-magin">
+					<label class="col-sm-2 control-label"><p th:text="#{subarea.description}"></p></label>
+					<div class="col-sm-10 ">
+						<p class="form-control-static" th:text="${subarea.description}"></p>
+					</div>
+				</div>
+				<div class="form-group clear-magin">
+					<label class="col-sm-2 control-label"><p th:text="#{subarea.rentalArrears}"></p></label>
+					<div class="col-sm-10 ">
+						<p class="form-control-static" th:text="${subarea.rentalArrears}"></p>
+					</div>
+				</div>
+			</form>
+			<table class="table table-striped">
+				<tr>
+					<th><p th:text="#{subarea.shop.id}"></p></th>
+					<th><p th:text="#{subarea.shop.description}"></p></th>
+					<th><p th:text="#{subarea.shop.numberLock}"></p></th>
+					<th><p th:text="#{subarea.shop.shopName}"></p></th>
+					<th><p th:text="#{subarea.shop.lockStatus}"></p></th>
+					<th><p th:text="#{subarea.shop.view}"></p></th>
+				</tr>
+				<tr th:each="shop : ${subarea.shop}">
+					<td th:text="${shop.id}"/>
+					<td th:text="${shop.description}"/>
+					<td th:text="${shop.numberLock}"/>
+					<td th:text="${shop.shopName}"/>
+					<td >
+						<div th:switch="${shop.status}"> 
+						  <p th:case="'0'"><i th:text="#{shop.lockStatus.available}"></i></p>
+						  <p th:case="*"><i th:text="#{shop.lockStatus.unavailable}"></i></p> 
+						</div>
+					</td>
+					<td><a th:href="${ '/shop/' + shop.id}"><p th:text="#{subarea.shop.view}"></p></a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

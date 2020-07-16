@@ -60,7 +60,7 @@ public class SubArea implements Serializable {
 	
 	@Getter
     @Setter
-    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER , mappedBy = "subArea", orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY , mappedBy = "subArea", orphanRemoval = true)
     private List<Shop> shop = new ArrayList<>();
 
 }

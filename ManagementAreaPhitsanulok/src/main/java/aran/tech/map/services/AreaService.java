@@ -23,7 +23,9 @@ public class AreaService {
 	public Area findById(Long id) {
 		Optional<Area> ret = areaRepository.findById(id) ;
 		if (ret.isPresent() ) {
-			return ret.get() ;
+			Area area = ret.get() ;
+			area.getSubarea() ;
+			return area ;
 		}
 		
 		return null ;

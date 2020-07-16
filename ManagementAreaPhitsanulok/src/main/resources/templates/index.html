@@ -98,8 +98,11 @@
 				fixImage.appendChild(clone);
 	      });
 	    var describe = document.getElementById('myModal-describe') ;
-	    describe.innerHTML = '';
-	    describe.appendChild(document.createTextNode(subarea.description));
+	    describe.innerHTML = subarea.description;
+	    //describe.appendChild(document.createTextNode(subarea.description));
+	    
+		var info = document.getElementById("myModal-show-info");
+		info.onclick = function() { window.location.href='/subarea/'+subarea.id };
 		
 	}
 	function onClickShop(e, shop) {
@@ -224,12 +227,13 @@
 							 	onclick="onClickCloseModal(this) ;"
 								th:src="@{/images/close.png}"
 								class="myModal-close close" alt="Cinque Terre" />
-								
-								<p id=myModal-describe class=myModal-describe />
-								<p>onart</p>
-								<img id=myModal-show-info src="../../static/images/SHOW_INFO_RED.png"
-							 	th:src="@{/images/SHOW_INFO_RED.png}"
-								class="myModal-show-info" alt="Cinque Terre" />
+								<div class=myModal-describe>
+									<p id=myModal-describe />
+									<p></p>
+									<img id=myModal-show-info src="../../static/images/SHOW_INFO_RED.png"
+								 	th:src="@{/images/SHOW_INFO_RED.png}"
+									class="myModal-show-info" alt="Cinque Terre" />
+								</div>
 						</div>
 						</div>
 						</div>
