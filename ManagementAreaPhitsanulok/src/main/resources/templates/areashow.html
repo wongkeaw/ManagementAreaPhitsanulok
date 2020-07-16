@@ -6,16 +6,14 @@
 
 <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
 <script th:inline="javascript">
-function reserveSpace(e) {
-	var shopId = document.getElementById("shop-id");
-	console.log(shopId.innerHTML) ;
-	window.location.href='/shop/reserveSpace/'+shopId.innerHTML
-}
-
-function invoice(e) {
-	window.open('/images/invoice.pdf') ;
-}
-
+window.onload = function() {
+	var myBackgroundImage = document.getElementById('MyBackgroundImage') ;
+	var asi = document.getElementById('area-show-image') ;
+	asi.style.height  = myBackgroundImage.height + "px" ;
+	var modalbg = document.getElementById('area-show-info');
+	modalbg.style.display = "block";
+	
+};
 
 </script>
 </head>
@@ -24,7 +22,20 @@ function invoice(e) {
 		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
 
 		<h2 th:text="#{area.info}"></h2>
-		<div>
+		<div id="area-show-image" class=area-show-image >
+			<div class="row text-center">
+				<div id=FixImage class="fix_image_position">
+				<img id=MyObjectImage style=" top: 0px;left: 0px;"
+					src="../../static/images/circle_red.png"
+					th:src="@{/images/circle_red.png}" class="rounded my-object-image" />
+				<img id=MyBackgroundImage src="../../static/images/SHOP01.jpg"
+					th:src="@{/images/main_area.jpg}"
+					class="rounded area-my-background-image" /> 
+				<div id="DIVMyObjectImage"></div>
+				</div>
+			</div>
+		</div>
+		<div id="area-show-info">
 			<form class="form-horizontal">
 				<div class="form-group clear-magin">
 					<label class="col-sm-2 control-label"><p th:text="#{area.id}"></p></label>
@@ -52,6 +63,15 @@ function invoice(e) {
 					<td th:text="${subarea.description}"/>
 					<td th:text="${subarea.rentalArrears}"/>
 					<td><a th:href="${ '/subarea/' + subarea.id}"><p th:text="#{subarea.shop.view}"></p></a></td>
+				</tr>
+				<tr>
+					<td colspan="4" style="text-align: center;">
+						<img id=area-add-zone src="../../static/images/SHOW_ADD_ZONE_RED.png"
+							 	th:src="@{/images/SHOW_ADD_ZONE_RED.png}"
+							 	onclick="alert( 'add zone')"
+								class="sub-myModal-show-info" alt="Cinque Terre" />
+						<p th:text="#{area.subarea.add}"></p>
+					</td>
 				</tr>
 			</table>
 			 

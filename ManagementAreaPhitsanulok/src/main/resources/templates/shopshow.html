@@ -6,6 +6,16 @@
 
 <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
 <script th:inline="javascript">
+
+window.onload = function() {
+	var myBackgroundImage = document.getElementById('MyBackgroundImage') ;
+	var asi = document.getElementById('shop-show-image') ;
+	asi.style.height  = myBackgroundImage.height + "px" ;
+	var modalbg = document.getElementById('shop-show-info');
+	modalbg.style.display = "block";
+	
+};
+
 function reserveSpace(e) {
 	var shopId = document.getElementById("shop-id");
 	console.log(shopId.innerHTML) ;
@@ -24,7 +34,20 @@ function invoice(e) {
 		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
 
 		<h2 th:text="#{shop.info}"></h2>
-		<div>
+		<div id="shop-show-image" class=shop-show-image >
+			<div class="row text-center">
+				<div id=FixImage class="fix_image_position">
+				<img id=MyObjectImage style=" top: 0px;left: 0px;"
+					src="../../static/images/circle_red.png"
+					th:src="@{/images/circle_red.png}" class="rounded my-object-image" />
+				<img id=MyBackgroundImage src="../../static/images/SHOP01.jpg"
+					th:src="${ '/images/' + shop.image}"
+					class="rounded sub-area-my-background-image" /> 
+				<div id="DIVMyObjectImage"></div>
+				</div>
+			</div>
+		</div>
+		<div id=shop-show-info >
 			<form class="form-horizontal">
 				<p class="form-control-static" th:text="${shop.subArea.id}" hidden="true" /> 
 				<div class="form-group clear-magin">

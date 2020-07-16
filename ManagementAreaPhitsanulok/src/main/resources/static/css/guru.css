@@ -9,6 +9,7 @@
   top: 0px;
   left: 0px;
   max-width: 100%;
+  min-width: 100% ;
   width: auto;
   height: auto;
 }
@@ -145,4 +146,22 @@
   margin-right: 0px;
   margin-left: 0px;
   margin-bottom: 0px;
+}
+.area-my-background-image {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  max-width: 100%;
+  min-width:100% ;
+  width: auto;
+  height: auto;
+}
+.sub-area-my-background-image {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  max-width: 100%;
+  min-width:100% ;
+  width: auto;
+  height: auto;
 }

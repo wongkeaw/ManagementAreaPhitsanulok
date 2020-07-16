@@ -6,6 +6,14 @@
 
 <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
 <script th:inline="javascript">
+window.onload = function() {
+	var myBackgroundImage = document.getElementById('MyBackgroundImage') ;
+	var asi = document.getElementById('sub-area-show-image') ;
+	asi.style.height  = myBackgroundImage.height + "px" ;
+	var modalbg = document.getElementById('sub-area-show-info');
+	modalbg.style.display = "block";
+	
+};
 function reserveSpace(e) {
 	var shopId = document.getElementById("shop-id");
 	console.log(shopId.innerHTML) ;
@@ -24,9 +32,21 @@ function invoice(e) {
 		<!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
 
 		<h2 th:text="#{subarea.info}"></h2>
-		<div>
+		<div id="sub-area-show-image" class=area-show-image >
+			<div class="row text-center">
+				<div id=FixImage class="fix_image_position">
+				<img id=MyObjectImage style=" top: 0px;left: 0px;"
+					src="../../static/images/circle_red.png"
+					th:src="@{/images/circle_red.png}" class="rounded my-object-image" />
+				<img id=MyBackgroundImage src="../../static/images/SHOP01.jpg"
+					th:src="${ '/images/' + subarea.image}"
+					class="rounded sub-area-my-background-image" /> 
+				<div id="DIVMyObjectImage"></div>
+				</div>
+			</div>
+		</div>
+		<div id="sub-area-show-info" style="display: none;">
 			<form class="form-horizontal">
-			
 				<div class="form-group clear-magin">
 					<label class="col-sm-2 control-label"><p th:text="#{subarea.id}"></p></label>
 					<div class="col-sm-10 ">
@@ -52,6 +72,7 @@ function invoice(e) {
 					</div>
 				</div>
 			</form>
+		
 			<table class="table table-striped">
 				<tr>
 					<th><p th:text="#{subarea.shop.id}"></p></th>
@@ -73,6 +94,15 @@ function invoice(e) {
 						</div>
 					</td>
 					<td><a th:href="${ '/shop/' + shop.id}"><p th:text="#{subarea.shop.view}"></p></a></td>
+				</tr>
+				<tr>
+					<td colspan="6" style="text-align: center;">
+						<img id=sub-area-add-shop src="../../static/images/SHOW_SHOP_RED.png"
+							 	th:src="@{/images/SHOW_SHOP_RED.png}"
+							 	onclick="alert( 'add shop')"
+								class="sub-myModal-show-info" alt="Cinque Terre" />
+						<p th:text="#{subarea.shop.add}"></p>
+					</td>
 				</tr>
 			</table>
 		</div>
