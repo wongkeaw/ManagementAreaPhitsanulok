@@ -51,32 +51,32 @@ function invoice(e) {
 			<form class="form-horizontal">
 				<p class="form-control-static" th:text="${shop.subArea.id}" hidden="true" /> 
 				<div class="form-group clear-magin">
-					<label class="col-sm-2 control-label"><p th:text="#{shop.area}"></p></label>
-					<div class="col-sm-10 ">
+					<label class="col-sm-5 control-label"><p th:text="#{shop.area}"></p></label>
+					<div class="col-sm-7">
 						<a th:href="${ '/subarea/' + shop.subArea.id}"><p class="form-control-static" th:text="${shop.subArea.description}"/></a>
 					</div>
 				</div>
 				<div class="form-group clear-magin">
-					<label class="col-sm-2 control-label"><p th:text="#{shop.id}"></p></label>
-					<div class="col-sm-10 ">
+					<label class="col-sm-5 control-label"><p th:text="#{shop.id}"></p></label>
+					<div class="col-sm-7">
 						<p class="form-control-static" id="shop-id" th:text="${shop.id}"></p>
 					</div>
 				</div>
 				<div class="form-group clear-magin">
-					<label class="col-sm-2 control-label"><p th:text="#{shop.description}"></p></label>
-					<div class="col-sm-10 ">
+					<label class="col-sm-5 control-label"><p th:text="#{shop.description}"></p></label>
+					<div class="col-sm-7 ">
 						<p class="form-control-static" th:text="${shop.description}"></p>
 					</div>
 				</div>
 				<div class="form-group clear-magin">
-					<label class="col-sm-2 control-label"><p th:text="#{shop.numberLock}"></p></label>
-					<div class="col-sm-10 ">
+					<label class="col-sm-5 control-label"><p th:text="#{shop.numberLock}"></p></label>
+					<div class="col-sm-7 ">
 						<p class="form-control-static" th:text="${shop.numberLock}"></p>
 					</div>
 				</div>
 				<div class="form-group clear-magin">
-					<label class="col-sm-2 control-label"><p th:text="#{shop.lockStatus}"></p></label>
-					<div class="col-sm-10 ">
+					<label class="col-sm-5 control-label"><p th:text="#{shop.lockStatus}"></p></label>
+					<div class="col-sm-7 ">
 						<div th:switch="${shop.status}"> 
 						  <p th:case="'0'"><i th:text="#{shop.lockStatus.available}"></i></p>
 						  <p th:case="*"><i th:text="#{shop.lockStatus.unavailable}"></i></p> 
@@ -84,41 +84,43 @@ function invoice(e) {
 					</div>
 				</div>
 				<div class="form-group clear-magin">
-					<label class="col-sm-2 control-label"><p th:text="#{shop.shopName}"></p></label>
-					<div class="col-sm-10 ">
+					<label class="col-sm-5 control-label"><p th:text="#{shop.shopName}"></p></label>
+					<div class="col-sm-7 ">
 						<p class="form-control-static" th:text="${shop.shopName}"></p>
 					</div>
 				</div>
 				<div class="form-group clear-magin">
-					<label class="col-sm-2 control-label"><p th:text="#{shop.productType}"></p></label>
-					<div class="col-sm-10 ">
+					<label class="col-sm-5 control-label"><p th:text="#{shop.productType}"></p></label>
+					<div class="col-sm-7 ">
 						<p class="form-control-static" th:text="${shop.productType}"></p>
 					</div>
 				</div>
 				<div class="form-group clear-magin">
-					<label class="col-sm-2 control-label"><p th:text="#{shop.sizeSpace}"></p></label>
-					<div class="col-sm-10 ">
+					<label class="col-sm-5 control-label"><p th:text="#{shop.sizeSpace}"></p></label>
+					<div class="col-sm-7 ">
 						<p class="form-control-static" th:text="${shop.sizeSpace}"></p>
 					</div>
 				</div>
 				<div class="form-group clear-magin">
-					<label class="col-sm-2 control-label"><p th:text="#{shop.Rent}"></p></label>
-					<div class="col-sm-10 ">
+					<label class="col-sm-5 control-label"><p th:text="#{shop.Rent}"></p></label>
+					<div class="col-sm-7 ">
 						<p class="form-control-static inline" th:text="${shop.monthlyRent}"></p>
 					</div>
 				</div>
 				<div class="form-group clear-magin">
-					<label class="col-sm-2 control-label"><p th:text="#{shop.rentalArrears}"></p></label>
-					<div class="col-sm-10 ">
+					<label class="col-sm-5 control-label"><p th:text="#{shop.rentalArrears}"></p></label>
+					<div class="col-sm-7 ">
 						<p class="form-control-static" th:text="${shop.rentalArrears}"></p>
 					</div>
 				</div>
 				<div class="form-group clear-magin">
-					<label class="col-sm-2 control-label"><p th:text="#{shop.other}"></p></label>
-					<div class="col-sm-10 ">
+					<label class="col-sm-5 control-label"><p th:text="#{shop.other}"></p></label>
+					<div class="col-sm-7 ">
 						<p class="form-control-static" th:text="${shop.other}"></p>
 					</div>
 				</div>
+				
+				
 				<div class="form-group clear-magin">
 					<div class="col-sm-4">
 						<img id=shop-info-update src="../../static/images/SHOW_UPDATE_RED.png"

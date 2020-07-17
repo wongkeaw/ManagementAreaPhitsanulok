@@ -138,8 +138,7 @@
   position: absolute;
   top: 0px;
   left: 0px;
-  max-width: 100%;
-  width: auto;
+  width: 100%;
   height: auto;
 }
 .form-horizontal .form-group.clear-magin {
@@ -151,17 +150,24 @@
   position: absolute;
   top: 0px;
   left: 0px;
-  max-width: 100%;
-  min-width:100% ;
-  width: auto;
+  width: 100%;
   height: auto;
 }
 .sub-area-my-background-image {
   position: absolute;
   top: 0px;
   left: 0px;
-  max-width: 100%;
-  min-width:100% ;
-  width: auto;
+  width: 100%;
   height: auto;
+}
+
+.login-from {
+	width: 100%;
+	text-align: center;
+	padding-left: 20%;
+    padding-right: 30%;
+}
+
+.navbar-right {
+	margin-right: 25px;
 }
